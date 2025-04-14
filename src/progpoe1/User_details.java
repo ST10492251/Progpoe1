@@ -34,6 +34,13 @@ public class User_details {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+    public boolean ValidatePhonenumber(String phonenumber){
+    String regex = "^([27])(?=.*[+])[27+]{10}$";
+    Pattern pat = Pattern.compile(regex);
+    Matcher matcher = pat.matcher(phonenumber);
+    return false;
+    
+    }
     
     
     //method to validate the user's paasword;

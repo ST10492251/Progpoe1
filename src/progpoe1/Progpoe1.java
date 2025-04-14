@@ -28,22 +28,33 @@ public class Progpoe1 {
        String phonenumber = scan.nextLine();
        user.setPhonenumber(phonenumber);
        
+       
+       
+       if(!user.ValidatePhonenumber(phonenumber)){
+           System.out.println("PHONENUMBER FORMATED INCORRECTLY:(");
+           
+       }else{
+           System.out.println("PHONENUMBER FORMATED CORRECTLY:(");
+       }
+       
      
       
       
       //the following if statements are to check if the user as followed the regex pattern while setting his or her password and username; 
       if(!user.ValidCredentails(password)){ 
-          System.out.println("password incorrectly formatted:(");
+          System.out.println("password correctly formatted:(");
           
       }else{
-         System.out.println("password correctly formatted:)");
+         System.out.println("password incorrectly formatted:)");
          
          if(!user.ValidUsername(username)){
-         System.out.println("username incorrectly formatted:(");
+         System.out.println("username correctly formatted:(");
         
          }else{
-             System.out.println("username correctly formatted:(");
+             System.out.println("username incorrectly formatted:(");
          }
+         
+         
           System.out.println(" Enter your username to login : ");
           scan.nextLine();
        user.getUsername();
