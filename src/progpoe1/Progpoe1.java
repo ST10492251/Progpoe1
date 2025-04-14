@@ -22,25 +22,23 @@ public class Progpoe1 {
        System.out.println(" Enter Password : ");
        String password = scan.nextLine();
        user.setPassword(password);
+      
        
-       
-       System.out.println("Enter internationalcode : ");
-       String internationalcode = scan.nextLine();
-       user.setInternationalcode(internationalcode);
-       
-       System.out.println(" Enter phonenumber : ");
+       System.out.println(" Enter phonenumber : (e.g +277665083) >> ");
        String phonenumber = scan.nextLine();
        user.setPhonenumber(phonenumber);
        
+     
+      
       
       //the following if statements are to check if the user as followed the regex pattern while setting his or her password and username; 
-      if(user.ValidCredentails(password)){ 
+      if(!user.ValidCredentails(password)){ 
           System.out.println("password incorrectly formatted:(");
           
       }else{
          System.out.println("password correctly formatted:)");
          
-         if(user.ValidUsername(username)){
+         if(!user.ValidUsername(username)){
          System.out.println("username incorrectly formatted:(");
         
          }else{
@@ -55,11 +53,11 @@ public class Progpoe1 {
        user.getPassword();
        // the program must display a if the user was able to login successful;
        System.out.println(" LOGIN SUCCESSFUL !!");
+      
          
       }
        
       System.out.println(" Username : "  +  user.getUsername());
-      System.out.println(" Internationalcode : " + user.getInternationalcode());
-      System.out.println(" Phonenumber : " + user.getPhonenumber());
+      System.out.println(" phoneNumber "+ user.getPhonenumber());
     }
     }

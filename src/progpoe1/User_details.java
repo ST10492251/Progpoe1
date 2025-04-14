@@ -9,7 +9,6 @@ public class User_details {
 
   String username;
  String password;
- String internationalcode;
  String phonenumber;
  
 
@@ -28,22 +27,14 @@ public class User_details {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String getInternationalcode(){
-    return internationalcode;
-    }
-    
-    public void setInternationalcode(String internationalcode){
-    this.internationalcode = internationalcode;
-    }
-
-    public String getPhonenumber() {
+   public String getPhonenumber() {
         return phonenumber;
     }
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+    
     
     //method to validate the user's paasword;
     public boolean ValidCredentails(String password){
@@ -61,4 +52,5 @@ public class User_details {
     Matcher matcher = pat.matcher(username);
     return false;
     }
+    //REFERENCE: Java regex programs-Basic to advanced,[Article]<https://www.geeksforgeeks.org/java-regex-programs/>[Accessed 08 April 2025];
 }
