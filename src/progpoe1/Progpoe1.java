@@ -2,6 +2,9 @@ package progpoe1;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
+ import java.util.*;
+
+
 
 
 
@@ -9,6 +12,9 @@ public class Progpoe1 {
 
    
     public static void main(String[] args) {
+        
+       
+                
         User_details login = new User_details();
         String Username = JOptionPane.showInputDialog("Please enter your username");
         String Password = JOptionPane.showInputDialog("please enter your password");
@@ -45,15 +51,22 @@ public class Progpoe1 {
             JOptionPane.showMessageDialog(null, "Welcome to QuickChat.");
 
             boolean exit = false;
-        while(!exit) {
-                String menu = JOptionPane.showInputDialog(
+             String[] ids = {"101","102","103"};
+        String[] Messages ={"HI,HOW ARE YOU?" , "GOOD THANKS AND YOU? i was just checking up on you,stay safe! " ,"GOODBYE"};
+        String[] cellnumber = {"0635044448","0763124799","0637722274"};
+        String []  longestMessage = {"GOOD THANKS AND YOU? i was just checking up on you,stay safe!"};
+         String[] allMessages = {"HI,HOW ARE YOU?\n" + "GOOD THANKS AND YOU? i was just checking up on you,stay safe! \n"+ "GOODBYE\n"};
+        
+      MessageManager manage = new MessageManager( ids,Messages,cellnumber,longestMessage,allMessages);
+        while(true) {
+                String optionOne= JOptionPane.showInputDialog(
                     "Choose an option:\n" +
                     "1) Send Messages\n" +
                     "2) Show Recently Sent Messages\n" +
                     "3) Quit"
                 );
 
-                switch (menu) {
+                switch (optionOne) {
                     case "1":
                         String messageCountInput = JOptionPane.showInputDialog("How many messages would you like to send?");
                         int messageCount = Integer.parseInt(messageCountInput);
@@ -88,11 +101,45 @@ public class Progpoe1 {
                         break;
 
                     case "2":
-                        JOptionPane.showMessageDialog(null, "Coming Soon.");
-                        break;
+                        int option =Integer.parseInt(JOptionPane.showInputDialog( "select an option: \n"
+                        +"1 Search message by ID \n"
+                        +"2 Search message by recipient cellnumber \n"
+                        +"3 Display longest sent message \n"
+                        +"4 Display a report of all the messages sent \n"
+                        ));
+                        switch(option){
+                            case 1 :
+                                String searchById = JOptionPane.showInputDialog("ENTER ID TO SEARCH THE MESSAGE");
+                                JOptionPane.showMessageDialog(null,manage.searchMessageById(searchById));
+                                break;
+                                
+                            case 2:
+                                String searchCellphoneNumber = JOptionPane.showInputDialog("Enter the cellphone number you want to search");
+                                JOptionPane.showMessageDialog(null,manage.searchByCellphone(searchCellphoneNumber));
+                                break;
+                                
+                            case 3:
+                                JOptionPane.showMessageDialog(null,manage.DisplayLongestMessage());
+                            
+                                break;
 
+                            case 4: 
+                            JOptionPane.showMessageDialog(null, manage.DisplayAllMessagesSent());
+                            break;
+                            
+                            default:
+                            JOptionPane.showMessageDialog(null,"No option selected,exit!");
+                            break;
+                        }
+                        JOptionPane.showMessageDialog(null,manage.searchMessageById("101"));
+                        JOptionPane.showMessageDialog(null, manage.searchByCellphone("0635044448"));
+                        JOptionPane.showMessageDialog(null, manage.DisplayLongestMessage());
+                        JOptionPane.showMessageDialog(null, manage.DisplayAllMessagesSent());
+                        break;
+ 
                     case "3":
                         exit = true;
+                         JOptionPane.showMessageDialog(null, "Goodbye!");
                         break;
 
                     default:
@@ -105,7 +152,7 @@ public class Progpoe1 {
             JOptionPane.showMessageDialog(null, "Login failed. Username and password do not match.");
         }
 
-        JOptionPane.showMessageDialog(null, "Goodbye!");
+       
     }
     {
      String text = "HELLO WORLD";
@@ -120,7 +167,6 @@ public class Progpoe1 {
     System.out.print(fruit[0]);
         
     }
+    
+  
 }
-
-           
-
