@@ -55,9 +55,10 @@ public class Progpoe1 {
         String[] Messages ={"HI,HOW ARE YOU?" , "GOOD THANKS AND YOU? i was just checking up on you,stay safe! " ,"GOODBYE"};
         String[] cellnumber = {"0635044448","0763124799","0637722274"};
         String []  longestMessage = {"GOOD THANKS AND YOU? i was just checking up on you,stay safe!"};
+        String[] MessageHashes = {"Message deleted"};
          String[] allMessages = {"HI,HOW ARE YOU?\n" + "GOOD THANKS AND YOU? i was just checking up on you,stay safe! \n"+ "GOODBYE\n"};
         
-      MessageManager manage = new MessageManager( ids,Messages,cellnumber,longestMessage,allMessages);
+      MessageManager manage = new MessageManager( ids,Messages,cellnumber,longestMessage,MessageHashes,allMessages);
         while(true) {
                 String optionOne= JOptionPane.showInputDialog(
                     "Choose an option:\n" +
@@ -105,7 +106,8 @@ public class Progpoe1 {
                         +"1 Search message by ID \n"
                         +"2 Search message by recipient cellnumber \n"
                         +"3 Display longest sent message \n"
-                        +"4 Display a report of all the messages sent \n"
+                         + "4 Delete messages using messageHash  \n"
+                        +"5 Display a report of all the messages sent \n"
                         ));
                         switch(option){
                             case 1 :
@@ -122,8 +124,11 @@ public class Progpoe1 {
                                 JOptionPane.showMessageDialog(null,manage.DisplayLongestMessage());
                             
                                 break;
-
-                            case 4: 
+                            case 4: String DeleteByHash = JOptionPane.showInputDialog("Enter message hash");
+                                JOptionPane.showMessageDialog(null, manage.DeleteByHashes());
+                              break;
+                              
+                            case 5: 
                             JOptionPane.showMessageDialog(null, manage.DisplayAllMessagesSent());
                             break;
                             
