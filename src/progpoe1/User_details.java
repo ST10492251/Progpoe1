@@ -34,33 +34,37 @@ public class User_details {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    public boolean ValidatePhonenumber(String phonenumber){
-    String regex = "^([27])(?=.*[+])[27+]{10}$";
-    Pattern pat = Pattern.compile(regex);
-    Matcher matcher = pat.matcher(phonenumber);
-    return false;
-    
-    }
     
     
-    //method to validate the user's paasword;
-    public boolean ValidCredentails(String password){
-      String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$";
-      Pattern pat = Pattern.compile(regex);
-      Matcher matcher = pat.matcher(password);
-      return false;
-      
+    
+    
 
-      }
-  // method to validate the user's username;
-    public boolean ValidUsername(String username){
-    String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[_])[A-Za-z_]{5}$";
-    Pattern pat = Pattern.compile(regex);
-    Matcher matcher = pat.matcher(username);
-    return false;
+    // Username must contain "_" and be no longer than 5 characters
+    public boolean ValidUsername(String username) {
+        return username.contains("_") && username.length() <= 5;
     }
+
+    // Password must be at least 8 characters long and contain:
+    // - at least one uppercase letter
+    // - at least one digit
+    // - at least one special character
+    public boolean ValidCredentails(String password) {
+        if (password.length() < 8) return false;
+
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasDigit = password.matches(".*\\d.*");
+        boolean hasSpecial = password.matches(".*[!@#$%^&*()\\-+=<>?/{}~|].*");
+
+        return hasUppercase && hasDigit && hasSpecial;
+    }
+
+    // Phone number must be in international format: starts with '+' followed by 10 to 15 digits
+    public boolean ValidatePhonenumber(String phonenumber) {
+        return phonenumber.matches("^\\+\\d{10,15}$");
+    }
+
+
     //REFERENCE: Java regex programs-Basic to advanced,[Article]<https://www.geeksforgeeks.org/java-regex-programs/>[Accessed 08 April 2025];
     
-   
-}
+} 
 
